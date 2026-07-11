@@ -1,0 +1,12 @@
+BASE_PATH = "/futures/usdt"
+CONTRACTS = f"{BASE_PATH}/contracts"
+CONTRACTS_ALL = f"{BASE_PATH}/contracts_all"
+TICKERS = f"{BASE_PATH}/tickers"
+CANDLESTICKS = f"{BASE_PATH}/candlesticks"
+ORDER_BOOK = f"{BASE_PATH}/order_book"
+TRADES = f"{BASE_PATH}/trades"
+FUNDING_RATE = f"{BASE_PATH}/funding_rate"
+CONTRACT_STATS = f"{BASE_PATH}/contract_stats"
+LIQUIDATES = f"{BASE_PATH}/liquidates"
+LIQ_ORDERS = f"{BASE_PATH}/liq_orders"
+
