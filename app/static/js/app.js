@@ -1,0 +1,6 @@
+function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function renderCards(items){if(!items||!items.length)return '<p class="muted">此時間點無可靠排名。</p>';return items.map(item=>`<article class="card"><div class="card-head"><div><h3>${escapeHtml(item.contract)}</h3><span class="tag ${item.direction}">${escapeHtml(item.direction)}</span><span class="tag">${escapeHtml(item.market_state)}</span></div><div class="score">${Number(item.ranking_score||0).toFixed(1)}</div></div><p>把握程度 ${Number(item.confidence||0).toFixed(1)}／100，資料完整度 ${Number(item.data_completeness_pct||0).toFixed(1)}%</p><p>${escapeHtml((item.reasons||[]).join('、')||'沒有可用主要原因')}</p><small>風險：${escapeHtml((item.risk_flags||[]).join('、')||'none')}</small></article>`).join('')}
+async function loadRankings(){const holder=document.querySelector('#ranking-cards');if(!holder)return;const type=holder.dataset.rankingType;const url=type?`/api/rankings/${type}`:'/api/rankings';const data=await fetch(url).then(r=>r.json());holder.innerHTML=renderCards(type?data.items:data.combined)}
+async function loadStatus(){const holder=document.querySelector('#status-data');if(holder)holder.textContent=JSON.stringify(await fetch('/api/status').then(r=>r.json()),null,2)}
+loadRankings();loadStatus();
+
