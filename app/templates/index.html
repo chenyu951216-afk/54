@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-{% block title %}儀表板｜Gate Quant Scanner{% endblock %}
-{% block content %}
-<section class="hero"><div><p class="eyebrow">Gate USDT PERPETUAL</p><h1>量化找幣與可追溯排名</h1><p>只使用已收線 K 線與官方資料；資料不足時明確顯示，不為湊滿十名降低標準。</p></div><a class="button" href="/replay">開始歷史重播</a></section>
-<section class="grid metrics"><div><small>最後掃描</small><strong>{{ latest.finished_at if latest else '尚未掃描' }}</strong></div><div><small>合格標的</small><strong>{{ latest.successful_count if latest else 0 }}</strong></div><div><small>資料模式</small><strong>/api/status</strong></div><div><small>Discord</small><strong>選用</strong></div></section>
-<section class="panel"><div class="panel-head"><h2>綜合前十</h2><a href="/rankings">查看完整排名</a></div><div id="ranking-cards" class="cards"><p class="muted">載入中…</p></div></section>
-{% endblock %}
-
